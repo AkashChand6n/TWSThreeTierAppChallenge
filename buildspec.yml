@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    ACCOUNT_ID: 235494811179
+    ACCOUNT_ID: 038462784735
     REGION: us-east-1
     FRONTEND_REPO: three-tier-frontend
     BACKEND_REPO: three-tier-backend
@@ -54,8 +54,6 @@ phases:
       - mkdir -p k8s-out/Database
       - cp $K8S_MANIFEST_DIR/Database/*.yaml k8s-out/Database/
       - cp $K8S_MANIFEST_DIR/ingress.yaml k8s-out/
-
-      # ✅ Ensure required manifests are at root for CodePipeline deployment step
       - echo Creating root-level deployment.yaml and service.yaml...
       - cp k8s-out/Frontend/deployment.yaml k8s-out/deployment.yaml
       - cp k8s-out/Frontend/service.yaml k8s-out/service.yaml
