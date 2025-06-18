@@ -22,29 +22,29 @@ spec:
         role: api
     spec:
       imagePullSecrets:
-      - name: ecr-registry-secret
+        - name: ecr-registry-secret
       containers:
-      - name: api
-        image: image: 038462784735.dkr.ecr.us-east-1.amazonaws.com/three-tier-frontend:v1.41
-        imagePullPolicy: Always
-        env:
-          - name: MONGO_CONN_STR
-            valueFrom:
-              secretKeyRef:
-                name: mongo-sec
-                key: mongo-uri
-        ports:
-        - containerPort: 3500
-        livenessProbe: 
-          httpGet:
-            path: /ok
-            port: 3500
-          initialDelaySeconds: 2
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /ok
-            port: 3500
-          initialDelaySeconds: 5
-          periodSeconds: 5
-          successThreshold: 1
+        - name: api
+          image: 038462784735.dkr.ecr.us-east-1.amazonaws.com/three-tier-frontend:v1.41
+          imagePullPolicy: Always
+          env:
+            - name: MONGO_CONN_STR
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-sec
+                  key: mongo-uri
+          ports:
+            - containerPort: 3500
+          livenessProbe: 
+            httpGet:
+              path: /ok
+              port: 3500
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ok
+              port: 3500
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 1
