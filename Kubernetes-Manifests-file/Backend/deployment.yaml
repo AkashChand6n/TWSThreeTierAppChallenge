@@ -48,3 +48,11 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 5
             successThreshold: 1
+          volumeMounts:
+            - name: docdb-cert
+              mountPath: /certs
+              readOnly: true
+      volumes:
+        - name: docdb-cert
+          configMap:
+            name: docdb-ca-cert
