@@ -25,7 +25,7 @@ spec:
         - name: ecr-registry-secret
       containers:
         - name: api
-          image: 038462784735.dkr.ecr.us-east-1.amazonaws.com/three-tier-frontend:v1.41
+          image: 038462784735.dkr.ecr.us-east-1.amazonaws.com/three-tier-backend:v1.41
           imagePullPolicy: Always
           env:
             - name: MONGO_CONN_STR
